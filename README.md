@@ -77,14 +77,14 @@ In this part is needed to answer the following questions:
 
 4. Find the answer to:
 
-    - 50% of individuals have _____ or fewer interactions.
-    - The total number of user-article interactions in the dataset is ______.
-    - The maximum number of user-article interactions by any 1 user is ______.
-    - The most viewed article in the dataset was viewed _____ times.
-    - The article_id of the most viewed article is ______.
-    - The number of unique articles that have at least 1 rating ______.
-    - The number of unique users in the dataset is ______.
-    - The number of unique articles on the IBM platform.
+* 50% of individuals have _____ or fewer interactions.
+* The total number of user-article interactions in the dataset is ______.
+* The maximum number of user-article interactions by any 1 user is ______.
+* The most viewed article in the dataset was viewed _____ times.
+* The article_id of the most viewed article is ______.
+* The number of unique articles that have at least 1 rating ______.
+* The number of unique users in the dataset is ______.
+* The number of unique articles on the IBM platform.
     
 
 <a id='part_2'></a>
@@ -99,10 +99,10 @@ We hafe defined function to return the id and the title of the 10 most popular a
 
 We have defined a user-article interaction matrix:
 
-    - Each user only appears in each row once.
-    - Each article only shows up in one column.
-    - If a user has interacted with an article, then a 1 is placed where the user-row meets for that article-column. It does not matter how many times a user has interacted with the article, all entries where a user has interacted with an article should be a 1.
-    - If a user has not interacted with an item, then a zero is placed where the user-row meets for that article-column.
+* Each user only appears in each row once.
+* Each article only shows up in one column.
+* If a user has interacted with an article, then a 1 is placed where the user-row meets for that article-column. It does not matter how many times a user has interacted with the article, all entries where a user has interacted with an article should be a 1.
+* If a user has not interacted with an item, then a zero is placed where the user-row meets for that article-column.
 
 
 We have defined a function which takes a user_id and provide an ordered list of the most similar users to that user (from most similar to least similar). The returned result does not contain the provided user_id, as we know that each user is similar to him/herself. Because the results for each user here are binary, the similarity was computed as the dot product of two users.
@@ -111,25 +111,25 @@ Once we have the closest users, we have defined a function that loops through th
 
 We have also done another solution where:
 
-    - Instead of arbitrarily choosing when we obtain users who are all the same closeness to a given user, we have chosen the users that have the most total article interactions before choosing those with fewer article interactions.
+* Instead of arbitrarily choosing when we obtain users who are all the same closeness to a given user, we have chosen the users that have the most total article interactions before choosing those with fewer article interactions.
 
-    - Instead of arbitrarily choosing articles from the user where the number of recommended articles starts below the limit and ends exceeding it, we have chosen articles with the the most total interactions before choosing those with fewer total interactions.
+* Instead of arbitrarily choosing articles from the user where the number of recommended articles starts below the limit and ends exceeding it, we have chosen articles with the the most total interactions before choosing those with fewer total interactions.
 
 <a id='part_4'></a>
 ### Part IV: Content Based Recommendations
 
 In this part we have developed a Content Based approach using the `doc_description` and `doc_full_name` contained in the dataframe `df_content` to extract the content of the article. We could have used the `doc_body` also, but we have considered that we could obtain a dictionary too long and the basic information is contained in the first two fields.
 
-    - Firstly we have defined a funtction to tokenize the string resulting of concatenate the title and the description. We have lemmatized also the text with WordNetLemmatizer and we have used the SnowballStemmer with English.
+* Firstly we have defined a funtction to tokenize the string resulting of concatenate the title and the description. We have lemmatized also the text with WordNetLemmatizer and we have used the SnowballStemmer with English.
     
-    - We have defined also a function called ´tfidf_transformer´ that receives the data frame with the column of text we want to work with and the tokenize function we have defined before. It performs a vectorization and applies a tfidf transformation.
+* We have defined also a function called ´tfidf_transformer´ that receives the data frame with the column of text we want to work with and the tokenize function we have defined before. It performs a vectorization and applies a tfidf transformation.
     It returns a dataframe with all the articles as rows, the dictionary obtained with the vectorization as columns and the tfidf data as values.
     
-    - There is an additional consideration that we have taken into account. Some articles appeared in the dataframe of interactions `df` but not in `df_content`. These articles are old items that the users had read, but they are no longer available now. If we only have used the `df_contet` dataframe to make the `tfidf_dataframe`, we could not have used their titles to make recommendations. To fix this problem we have added also those articles to the tfidf calculations.
+* There is an additional consideration that we have taken into account. Some articles appeared in the dataframe of interactions `df` but not in `df_content`. These articles are old items that the users had read, but they are no longer available now. If we only have used the `df_contet` dataframe to make the `tfidf_dataframe`, we could not have used their titles to make recommendations. To fix this problem we have added also those articles to the tfidf calculations.
     
-    - In the steps above, we have obtained a datagrame with 3388 columns. We have reduced the number of features. using Principal Component Analisys (PCA).
+* In the steps above, we have obtained a datagrame with 3388 columns. We have reduced the number of features. using Principal Component Analisys (PCA).
     
-    - Then we have defined a function called ´find_euclidean_distance´ that receives the id of an article and the tfidf dataframe obtained before and provides a dataframe with all the articles as rows and the distance as a column. The articles will be ordered from the closest to the farest to the article_id especified.
+* Then we have defined a function called ´find_euclidean_distance´ that receives the id of an article and the tfidf dataframe obtained before and provides a dataframe with all the articles as rows and the distance as a column. The articles will be ordered from the closest to the farest to the article_id especified.
     
 
 
