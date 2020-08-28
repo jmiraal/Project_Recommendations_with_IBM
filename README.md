@@ -22,9 +22,9 @@
 <a id='project_motivation'></a>
 ## Project Motivation
 
-For this project we have analyzed the interactions that users have with articles on the IBM Watson Studio platform, and we have made recommendations to them about new articles we thought they would like. To do this we have used different approaches, like defining Machine Learning Pipelines with Natural Language Processing.
+In this project we have analyzed the interactions that users have with articles on the IBM Watson Studio platform, and we have made recommendations to them about new articles we thought they would like. To do this we have used different approaches, like defining Machine Learning Pipelines with Natural Language Processing.
 
-We have follow the structure of the notebook provided by Udacity, which includes some questions we need to answer and some cells with predefined code to check this answers.
+We have followed the structure of the notebook provided by Udacity, which includes some questions we need to answer and some cells with predefined code to check this answers.
 
 
 <a id='file_descriptions'></a>
